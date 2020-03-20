@@ -71,11 +71,13 @@ const config: Configuration = {
     }],
   ],
 
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+  /**
+   * Axios module configuration
+   * @see https://axios.nuxtjs.org/options
+   */
   axios: {
+    port: 3000,
+    prefix: '/api/v1/',
   },
 
   /*
@@ -87,7 +89,7 @@ const config: Configuration = {
     */
     extend () {
     }
-  }
+  },
 }
 
 export default config
