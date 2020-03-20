@@ -55,7 +55,7 @@ const config: Configuration = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    ['nuxt-fire', {
+    ['@nuxtjs/firebase', {
       config: {
         apiKey: 'AIzaSyA31WO-F5wBlzPJQzeHWe90DKQSdjriBIw',
         authDomain: 'wirvsvirus-eb4f2.firebaseapp.com',

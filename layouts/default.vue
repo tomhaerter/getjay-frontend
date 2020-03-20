@@ -1,5 +1,7 @@
 <template>
   <div>
+    <script src="https://kit.fontawesome.com/b6d19a5e5c.js" crossorigin="anonymous" />
+
     <nuxt />
   </div>
 </template>
