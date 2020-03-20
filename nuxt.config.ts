@@ -3,6 +3,10 @@ import { Configuration } from '@nuxt/types'
 const config: Configuration = {
   mode: 'universal',
 
+  server: {
+    port: 3001,
+  },
+
   /*
   ** Headers of the page
   */
@@ -50,7 +54,21 @@ const config: Configuration = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['nuxt-fire', {
+      config: {
+        apiKey: 'AIzaSyA31WO-F5wBlzPJQzeHWe90DKQSdjriBIw',
+        authDomain: 'wirvsvirus-eb4f2.firebaseapp.com',
+        databaseURL: 'https://wirvsvirus-eb4f2.firebaseio.com',
+        projectId: 'wirvsvirus-eb4f2',
+        storageBucket: 'wirvsvirus-eb4f2.appspot.com',
+        messagingSenderId: '70845195180',
+        appId: '1:70845195180:web:a5371fa181e1f1fc719009',
+      },
+      services: {
+        auth: true,
+      },
+    }],
   ],
 
   /*
