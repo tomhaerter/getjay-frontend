@@ -37,6 +37,7 @@ const config: Configuration = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/authentication',
   ],
 
   /*
@@ -45,7 +46,9 @@ const config: Configuration = {
   buildModules: [
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    // Doc: https://nuxt-typed-vuex.danielcroe.com
+    'nuxt-typed-vuex',
   ],
 
   /*

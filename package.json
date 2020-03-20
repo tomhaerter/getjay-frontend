@@ -19,7 +19,9 @@
     "core-js": "2.6.10",
     "firebase": "^7.12.0",
     "is-mobile": "^2.2.1",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "nuxt-typed-vuex": "^0.1.17",
+    "typed-vuex": "^0.1.17"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",

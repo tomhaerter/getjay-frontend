@@ -19,7 +19,7 @@ export default Vue.extend({
 
   computed: {
     user () {
-      return this.$fireAuth.currentUser
+      return this.$accessor.user.user
     },
   },
 })
