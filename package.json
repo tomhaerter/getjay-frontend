@@ -24,6 +24,7 @@
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",
     "nuxt-typed-vuex": "^0.1.17",
+    "portal-vue": "^2.1.7",
     "typed-vuex": "^0.1.17"
   },
   "devDependencies": {
@@ -34,6 +35,8 @@
     "@types/jsonwebtoken": "^8.3.8",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2"
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2"
   }
 }
