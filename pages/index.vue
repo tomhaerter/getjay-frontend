@@ -11,13 +11,7 @@ import Vue from 'vue'
 export default Vue.extend({
   mounted () {
     setTimeout(async () => {
-      const token = await this.$fireAuth.currentUser!.getIdToken()
-      this.$axios.setToken(token, '')
-
-      console.log('Firebase ID Token', token)
-
-      const { data } = await this.$axios('status/auth')
-      console.log('auth data', data)
+      const { data } = await this.$axios('status')
     }, 1000)
   },
 

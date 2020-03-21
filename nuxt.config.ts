@@ -38,6 +38,7 @@ const config: Configuration = {
   */
   plugins: [
     '~/plugins/authentication',
+    '~/plugins/axios',
   ],
 
   /*

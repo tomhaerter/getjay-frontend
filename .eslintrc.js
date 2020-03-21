@@ -12,5 +12,6 @@ module.exports = {
   rules: {
     'comma-dangle': 'off',
     'spaced-comment': 'warn',
+    'curly': ['multi', 'consistent'],
   },
 }
