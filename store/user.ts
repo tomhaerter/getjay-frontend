@@ -4,6 +4,7 @@ import * as firebase from 'firebase'
 export const state = () => ({
   user: undefined as firebase.UserInfo | undefined,
   idToken: '' as string,
+  demoMode: false,
 })
 
 export type RootState = ReturnType<typeof state>
@@ -16,6 +17,10 @@ export const mutations = mutationTree(state, {
   setIdToken (state, token: string | null) {
     state.idToken = token || ''
   },
+
+  enableDemoMode (state) {
+    state.demoMode = true
+  }
 })
 
 export const accessorType = getAccessorType({

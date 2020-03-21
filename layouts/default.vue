@@ -1,8 +1,9 @@
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-white" style="padding-bottom: 70px">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script src="https://kit.fontawesome.com/b6d19a5e5c.js" crossorigin="anonymous" />
 
+    <!-- Hide for now because of mobile only demo
     <nav x-data="{ open: false }" class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -82,8 +83,9 @@
         </div>
       </div>
     </nav>
+    -->
 
-    <div class="py-10">
+    <div class="pt-16">
       <header>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="text-3xl font-bold leading-tight text-gray-900">
@@ -99,11 +101,41 @@
         </div>
       </main>
     </div>
+
+    <nav class="fixed border-top-gray border w-full bottom-0 pb-2">
+      <div class="flex items-center justify-around text-xs text-petrol" style="height: 60px;">
+        <nuxt-link
+          to="/"
+          class="w-1/3 h-full flex flex-col justify-center text-center"
+          :class="{ 'text-salmon': page == 'overview' }"
+        >
+          <p class="text-xl"><i class="far fa-house" /></p>
+          <p>Übersicht</p>
+        </nuxt-link>
+        <nuxt-link
+          to="/offers"
+          class="w-1/3 h-full flex flex-col justify-center text-center"
+          :class="{ 'text-salmon': page == 'jobs' }"
+        >
+          <p class="text-xl"><i class="far fa-suitcase" /></p>
+          <p>Meine Jobs</p>
+        </nuxt-link>
+        <nuxt-link
+          to="/profile/me"
+          class="w-1/3 h-full flex flex-col justify-center text-center"
+          :class="{ 'text-salmon': page == 'profile' }"
+        >
+          <p class="text-xl"><i class="far fa-user-circle" /></p>
+          <p>Profil</p>
+        </nuxt-link>
+      </div>
+    </nav>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import mobile from 'is-mobile'
 
 export default Vue.extend({
   data () {
@@ -112,11 +144,29 @@ export default Vue.extend({
     }
   },
 
-  methods: {
-    openf () {
-      this.open = true
-    },
+  created () {
+    // On desktop we want to show a functional demo for now.
+    if (!mobile()) return
+
+    const alreadyEnabled = this.$accessor.user.demoMode
+    if (alreadyEnabled) return
+
+    const demoMode = this.$route.query.mode
+    if (demoMode !== 'demo') {
+      this.$accessor.user.enableDemoMode()
+      return this.$router.replace('/demo')
+    }
   },
+
+  computed: {
+    page () {
+      const route = this.$route.name!
+      if (route.indexOf('jobs') === 0) return 'jobs'
+      if (route.indexOf('profile') === 0) return 'profile'
+      
+      return 'overview'
+    }
+  }
 })
 </script>
 

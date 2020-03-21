@@ -86,7 +86,7 @@ const config: Configuration = {
   },
 
   proxy: {
-    '/api/v1/': 'http://localhost:3000',
+    '/api/v1/': 'http://192.168.99.100:3000/',
   },
 
   /*
