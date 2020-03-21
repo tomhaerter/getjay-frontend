@@ -95,14 +95,38 @@
       </header>
       <main>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div class="px-4 py-8 sm:px-0">
+          <div class="px-4 py-8 pt-0">
             <nuxt />
           </div>
         </div>
       </main>
     </div>
 
-    <nav class="fixed border-top-gray border w-full bottom-0 pb-2">
+    <login-card :open="openLogin" @close="openLogin = false" />
+
+    <div class="fixed inset-x-0 cursor-pointer" style="bottom: 68px;" @click="openLogin = true" v-if="!user">
+      <div class="bg-pink text-petrol">
+        <div class="max-w-screen-xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between flex-wrap">
+            <div class="w-0 flex-1 flex items-center">
+              <span class="flex px-4">
+                <i class="far fa-sunglasses" />
+              </span>
+              <div class="ml-3 font-medium truncate">
+                <p class="">
+                  Erstell dir dein Profil!
+                </p>
+                <p class="font-light text-xs">
+                  Dann hast du mehr von dieser App!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="fixed border-top-gray border-t w-full bottom-0 pb-2 bg-white">
       <div class="flex items-center justify-around text-xs text-petrol" style="height: 60px;">
         <nuxt-link
           to="/"
@@ -135,30 +159,41 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import LoginCard from '~/components/LoginCard.vue'
 import mobile from 'is-mobile'
 
 export default Vue.extend({
+  components: {
+    LoginCard,
+  },
+
   data () {
     return {
       open: false,
+      openLogin: false,
     }
   },
 
   created () {
     // On desktop we want to show a functional demo for now.
-    if (!mobile()) return
+    if (mobile()) return
 
     const alreadyEnabled = this.$accessor.user.demoMode
     if (alreadyEnabled) return
 
     const demoMode = this.$route.query.mode
     if (demoMode !== 'demo') {
-      this.$accessor.user.enableDemoMode()
       return this.$router.replace('/demo')
+    } else {
+      this.$accessor.user.enableDemoMode()
     }
   },
 
   computed: {
+    user () {
+      return this.$accessor.user.user
+    },
+
     page () {
       const route = this.$route.name!
       if (route.indexOf('jobs') === 0) return 'jobs'

@@ -2,7 +2,7 @@
   <nuxt-link :to="`/offers/${offer.id}`" :title="`Mehr über '${offer.title}' erfahren`">
     <div class="offer-card rounded-lg overflow-hidden relative">
       <div class="image-wrapper absolute inset-0">
-        <img :src="`https://picsum.photos/id/${offer.id}/${width}/${width / 2}`" :alt="offer.title" />
+        <img :src="offer.image" :alt="offer.title" />
         <div class="gradient absolute inset-0" />
       </div>
       <div class="card-content absolute inset-0 text-white p-4 flex flex-col justify-end">
