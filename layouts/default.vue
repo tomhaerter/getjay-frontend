@@ -1,8 +1,5 @@
 <template>
   <div class="min-h-screen bg-white" style="padding-bottom: 70px">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <script src="https://kit.fontawesome.com/b6d19a5e5c.js" crossorigin="anonymous" />
-
     <!-- Hide for now because of mobile only demo
     <nav x-data="{ open: false }" class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -195,7 +192,7 @@ export default Vue.extend({
     },
 
     page () {
-      const route = this.$route.name!
+      const route = this.$route.name || ''
       if (route.indexOf('jobs') === 0) return 'jobs'
       if (route.indexOf('profile') === 0) return 'profile'
       

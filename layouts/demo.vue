@@ -88,7 +88,7 @@
             <i>Speaker</i>
             <b>Camera</b>
 
-            <iframe src="http://localhost:3001/?mode=demo" class="w-full h-full" />
+            <iframe src="/?mode=demo" class="w-full h-full" />
           </div>
         </div>
       </div>

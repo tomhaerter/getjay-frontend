@@ -15,10 +15,14 @@ const config: Configuration = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
+    ],
+    script: [
+      { src: 'https://kit.fontawesome.com/b6d19a5e5c.js', crossorigin: 'anonymous' },
     ]
   },
 
@@ -37,7 +41,6 @@ const config: Configuration = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/vue-plugins', mode: 'client' },
     '~/plugins/authentication',
     '~/plugins/axios',
   ],
@@ -110,13 +113,17 @@ const config: Configuration = {
   },
 
   proxy: {
-    '/api/v1/': 'http://192.168.99.100:3000',
+    '/api/v1/': process.env.BACKEND_URL || 'http://192.168.99.100:3000',
   },
 
   /*
   ** Build configuration
   */
   build: {
+    transpile: [
+      /typed-vuex/,
+    ],
+
     /*
     ** You can extend webpack config here
     */

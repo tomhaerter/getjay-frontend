@@ -48,9 +48,7 @@ const axiosPlugin: Plugin = ({ app, $axios }) => {
     try {
       const idToken = await validIdToken()
       config.headers.common.Authorization = idToken
-    } catch (e) {
-      console.log(e)
-    }
+    } catch (e) { }
 
     return config
   })
