@@ -1,20 +1,24 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <div v-if="user">{{ user.displayName }}</div>
-      <nuxt-link to="/join" v-else>Join</nuxt-link>
-    </div>
+  <div>
+    <div v-if="user">{{ user.displayName }}</div>
+    <nuxt-link to="/join" v-else>Join</nuxt-link>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Logo from '~/components/Logo.vue'
 
 export default Vue.extend({
-  components: {
-    Logo
+  mounted () {
+    setTimeout(async () => {
+      const token = await this.$fireAuth.currentUser!.getIdToken()
+      this.$axios.setToken(token, '')
+
+      console.log('Firebase ID Token', token)
+
+      const { data } = await this.$axios('status/auth')
+      console.log('auth data', data)
+    }, 1000)
   },
 
   computed: {

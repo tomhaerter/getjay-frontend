@@ -11,7 +11,7 @@ const config: Configuration = {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Jobs around you',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -79,8 +79,12 @@ const config: Configuration = {
    * @see https://axios.nuxtjs.org/options
    */
   axios: {
-    port: 3000,
+    proxy: true,
     prefix: '/api/v1/',
+  },
+
+  proxy: {
+    '/api/v1/': 'http://localhost:3000',
   },
 
   /*
