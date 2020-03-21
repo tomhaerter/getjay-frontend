@@ -3,6 +3,20 @@ import jwt from 'jsonwebtoken'
 import moment from 'moment'
 
 const axiosPlugin: Plugin = ({ app, $axios }) => {
+  async function getUser (): Promise<firebase.User> {
+    let user = app.$fireAuth.currentUser
+    if (user) return user
+
+    return new Promise((resolve, reject) => {
+      app.$fireAuth.onAuthStateChanged((user) => {
+        if (user) resolve(user)
+        reject()
+      })
+
+      setTimeout(reject, 1000)
+    })
+  }
+
   /**
    * Returns a valid id token if at all possible. It tries to read the token
    * from the Vuex store, validates its expiration time and possibly retrieves
@@ -22,8 +36,7 @@ const axiosPlugin: Plugin = ({ app, $axios }) => {
 
       if (now.isAfter(expiryDate)) throw new Error('Expired JWT')
     } catch (e) {
-      const user = app.$fireAuth.currentUser
-      if (!user) throw new Error('Unauthenticated')
+      const user = await getUser()
 
       token = await user.getIdToken()
     }
@@ -35,7 +48,9 @@ const axiosPlugin: Plugin = ({ app, $axios }) => {
     try {
       const idToken = await validIdToken()
       config.headers.common.Authorization = idToken
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
 
     return config
   })

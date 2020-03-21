@@ -16,6 +16,7 @@ module.exports = {
         salmon: '#E38466',
         petrol: '#13314D',
         pale: '#6E7882',
+        pink: '#FCE9E4',
         catskills: '#E2E9F0',
       },
     },

@@ -37,6 +37,7 @@ const config: Configuration = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/vue-plugins', mode: 'client' },
     '~/plugins/authentication',
     '~/plugins/axios',
   ],
@@ -71,10 +72,31 @@ const config: Configuration = {
         appId: '1:70845195180:web:a5371fa181e1f1fc719009',
       },
       services: {
-        auth: true,
+        auth: {
+          ssr: true,
+        },
       },
     }],
   ],
+
+
+  pwa: {
+    // disable the modules you don't need
+    meta: false,
+    icon: false,
+    // if you omit a module key form configuration sensible defaults will be applied
+    // manifest: false,
+
+    workbox: {
+      importScripts: [
+        // ...
+        '/firebase-auth-sw.js'
+      ],
+      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
+      // only set this true for testing and remember to always clear your browser cache in development
+      dev: false
+    }
+  },
 
   /**
    * Axios module configuration
@@ -82,11 +104,13 @@ const config: Configuration = {
    */
   axios: {
     proxy: true,
+    // host: '192.168.99.100',
+    // port: 3000,
     prefix: '/api/v1/',
   },
 
   proxy: {
-    '/api/v1/': 'http://192.168.99.100:3000/',
+    '/api/v1/': 'http://192.168.99.100:3000',
   },
 
   /*
