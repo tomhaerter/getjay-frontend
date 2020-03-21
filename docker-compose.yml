@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+  jay:
+    build:
+      context: .
+    ports:
+      - 80:80
