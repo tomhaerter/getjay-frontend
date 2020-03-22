@@ -89,14 +89,4 @@ export default Vue.extend({
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
-
-.fade-enter, .fade-leave-to {
-  transition: opacity .3s;
-  opacity: 0;
-}
-
-.fade-enter-to, .fade-leave {
-  transition: opacity .3s;
-  opacity: 1;
-}
 </style>

@@ -1,9 +1,8 @@
 <template>
-  <div class="offer-wrapper -m-4 -mt-20" :class="{ loggedin: user }">
-    <div class="offer-card overflow-hidden relative">
+  <div class="offer-wrapper -m-4 -mt-20 pt-16" :class="{ loggedin: user }">
+    <div class="offer-card sticky top-0 z-50 mb-3">
       <div class="image-wrapper absolute inset-0">
         <img :src="offer.imageURI" :alt="offer.title" class="object-cover w-full h-full"/>
-        <img :src="offer.imageURI" :alt="offer.title" />
         <div class="gradient absolute inset-0" />
       </div>
 
@@ -17,15 +16,15 @@
           <i class="fas fa-chevron-left mr-1" /> Zurück
         </a>
       </div>
+
+      <div class="payment rounded-full bg-salmon absolute right-4 text-white pt-5 text-center">
+        <p class="font-semibold leading-none">10 €</p>
+        <p class="interval font-thin opacity-75 leading-tight">/Std.</p>
+      </div>
     </div>
 
     <div class="px-4 pb-3">
       <section class="flex pt-6 relative">
-        <div class="payment rounded-full bg-salmon absolute right-4 text-white pt-5 text-center">
-          <p class="font-semibold leading-none">10 €</p>
-          <p class="interval font-thin opacity-75 leading-tight">/Std.</p>
-        </div>
-
         <img src="" class="rounded-full" width="50" height="50" />
         <div class="ml-4">
           <h3 class="font-semibold text-l leading-narrow">Bauernhof Wieland</h3>
@@ -123,7 +122,7 @@ export default Vue.extend({
 .payment {
   width: 60px;
   height: 60px;
-  top: -30px;
+  bottom: -30px;
 }
 
 .payment .interval {

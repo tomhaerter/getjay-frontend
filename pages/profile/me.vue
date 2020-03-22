@@ -1,5 +1,5 @@
 <template>
-  <profile-content :me="true" />
+  <profile-content :me="true" class="pt-16" />
 </template>
 
 <script lang="ts">

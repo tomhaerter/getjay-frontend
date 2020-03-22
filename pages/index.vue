@@ -1,30 +1,34 @@
 <template>
   <div>
-    <portal to="title">Übersicht</portal>
+    <div class="sticky pb-4 pt-16 mb-2 top-0 bg-white z-50">
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">
+        Übersicht
+      </h2>
 
-    <div class="filters mb-6 mt-2 flex">
-      <label for="search" class="sr-only">Suche</label>
-      <div class="relative flex-1">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <i class="far fa-search" />
+      <div class="filters mb-6 mt-2 flex">
+        <label for="search" class="sr-only">Suche</label>
+        <div class="relative flex-1">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <i class="far fa-search" />
+          </div>
+          <input id="search" class="block w-full pl-10 pr-3 py-2 bg-catskills rounded-md leading-5 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:text-sm transition duration-150 ease-in-out" placeholder="Suche nach Jobs" />
         </div>
-        <input id="search" class="block w-full pl-10 pr-3 py-2 bg-catskills rounded-md leading-5 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:text-sm transition duration-150 ease-in-out" placeholder="Suche nach Jobs" />
+
+        <button class="block px-3 py-1 rounded-md bg-catskills ml-2 focus:outline-none" @click="filtersVisible = true">
+          <i class="far fa-filter" />
+        </button>
       </div>
 
-      <button class="block px-3 py-1 rounded-md bg-catskills ml-2 focus:outline-none" @click="filtersVisible = true">
-        <i class="far fa-filter" />
-      </button>
-    </div>
+      <filter-list :filters="filters" @close="filtersVisible = false" @save="updateFilters" :open="filtersVisible" />
 
-    <filter-list :filters="filters" @close="filtersVisible = false" @save="updateFilters" :open="filtersVisible" />
-
-    <div class="pills mb-6" v-if="user">
-      <button class="p-1 px-2 rounded-lg focus:outline-none" :class="mode == 'all' ? 'bg-pink font-semibold tracking-wide' : 'text-gray-400'" @click="mode = 'all'">
-        Alle Jobs
-      </button>
-      <button class="p-1 px-2 rounded-lg focus:outline-none" :class="mode == 'saved' ? 'bg-pink font-semibold tracking-wide' : 'text-gray-400'" @click="mode = 'saved'">
-        Gespeicherte Jobs
-      </button>
+      <div class="pills" v-if="user">
+        <button class="p-1 px-2 rounded-lg focus:outline-none" :class="mode == 'all' ? 'bg-pink font-semibold tracking-wide' : 'text-gray-400'" @click="mode = 'all'">
+          Alle Jobs
+        </button>
+        <button class="p-1 px-2 rounded-lg focus:outline-none" :class="mode == 'saved' ? 'bg-pink font-semibold tracking-wide' : 'text-gray-400'" @click="mode = 'saved'">
+          Gespeicherte Jobs
+        </button>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

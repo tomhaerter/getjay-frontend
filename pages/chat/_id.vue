@@ -1,5 +1,5 @@
 <template>
-  <div class="msgs">
+  <div class="msgs pt-16">
     <div class="msg" v-for="msg in conversation.messages" :key="msg.id">
       {{msg.message}}
       {{msg.createdAt}}
