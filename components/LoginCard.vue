@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="absolute inset-0 z-50 overflow-hidden" v-if="open">
+    <div class="fixed inset-0 z-50 overflow-hidden" v-if="open">
       <div class="backdrop bg-black opacity-75 absolute inset-0" @click="close" />
       <div class="absolute inset-x-0 bottom-0 bg-white rounded-t-lg py-10 px-4">
         <div class="text-center py-5">

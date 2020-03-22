@@ -10,7 +10,7 @@
         <p class="text-sm opacity-75">Mo - Mi, 12:00 - 18:00</p>
       </div>
 
-      <button class="absolute bottom-2 right-3 text-white text-xl px-1 focus:outline-none" @click.stop.prevent="toggleBookmark">
+      <button class="absolute bottom-2 right-3 text-white text-xl px-1 focus:outline-none" @click.stop.prevent="toggleBookmark" v-if="user">
         <i class="fas fa-bookmark" v-if="isBookmarked" />
         <i class="far fa-bookmark" v-else />
       </button>
