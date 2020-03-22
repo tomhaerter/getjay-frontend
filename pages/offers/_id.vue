@@ -8,7 +8,7 @@
 
       <div class="card-content absolute inset-0 text-white p-4 flex flex-col justify-end">
         <h3 class="text-xl font-bold">{{ offer.title }}</h3>
-        <p class="text-sm">Mo - Mi, 12:00 - 18:00</p>
+        <p class="text-sm opacity-75">Mo - Mi, 12:00 - 18:00</p>
       </div>
 
       <div class="absolute inset-x-0 top-12 px-4 flex items-between">
@@ -16,6 +16,49 @@
           <i class="fas fa-chevron-left mr-1" /> Zurück
         </a>
       </div>
+    </div>
+
+    <div class="px-4">
+      <section class="flex pt-6 relative">
+        <div class="payment rounded-full bg-salmon absolute right-4 text-white pt-5 text-center">
+          <p class="font-semibold leading-none">10 €</p>
+          <p class="interval font-thin opacity-75 leading-tight">/Std.</p>
+        </div>
+
+        <img src="" class="rounded-full" width="50" height="50" />
+        <div class="ml-4">
+          <h3 class="font-semibold text-l leading-narrow">Bauernhof Wieland</h3>
+          <p class="text-xs">Dorfstraße Nr. 14, 23769 Fehmarn</p>
+
+          <div class="categories mt-2">
+            <span class="text-xs text-white bg-petrol rounded-md uppercase py-1 px-2">Landwirtschaft</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h3 class="font-bold mb-2">Ihre Aufgaben</h3>
+        <ul>
+          <li class="mb-2 leading-tight">Spargelstechen</li>
+          <li class="leading-tight">Zum Teil körperlich anstrengende Tätigkeiten</li>
+        </ul>
+      </section>
+
+      <section class="mt-8">
+        <h3 class="font-bold mb-2">Beschreibung</h3>
+        <div class="">
+          Bauernhof Wieland zählt mit über 10.000 Mitarbeitern in über 110 Geschäftsstellen zu den führenden Personaldienstleistern in Deutschland. Unser Kundenspektrum umfasst kleine und mittelständische Betriebe genau wie Großunternehmen aller Branchen. Seit 1984 bieten wir gute Jobs, ein starkes Netzwerk und echte Perspektiven auf dem Arbeitsmarkt.
+        </div>
+      </section>
+
+      <section class="mt-8">
+        <h3 class="font-bold mb-2">Anforderungen</h3>
+        <ul>
+          <li class="mb-2 leading-tight">Berufserfahrung als Landwirtschaftshelfer (m/w/d)</li>
+          <li class="mb-2 leading-tight">Keine Angst vor Arbeit im Freien</li>
+          <li class="mb-2 leading-tight">Belastbarkeit, Ausdauer und Motivation</li>
+        </ul>
+      </section>
     </div>
   </div>
 </template>
@@ -52,5 +95,34 @@ export default Vue.extend({
 
 .gradient {
   background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, rgba(19, 49, 77, 0.63) 100%);
+}
+
+.payment {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+}
+
+.payment .interval {
+  font-size: 0.65rem;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  position: relative;
+}
+
+ul li::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 9999px;
+  background-color: #E38466;
+  left: -20px;
+  top: 6px;
 }
 </style>

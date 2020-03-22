@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white" style="padding-bottom: 70px">
+  <div class="min-h-screen bg-white text-petrol" style="padding-bottom: 70px">
     <!-- Hide for now because of mobile only demo
     <nav x-data="{ open: false }" class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

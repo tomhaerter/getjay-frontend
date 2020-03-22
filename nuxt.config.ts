@@ -106,14 +106,14 @@ const config: Configuration = {
    * @see https://axios.nuxtjs.org/options
    */
   axios: {
-    proxy: true,
-    // host: '192.168.99.100',
-    // port: 3000,
+    proxy: process.env.NODE_ENV !== 'production',
+    host: process.env.BACKEND_HOST || '192.168.99.100',
+    port: process.env.BACKEND_PORT || 3000,
     prefix: '/api/v1/',
   },
 
   proxy: {
-    '/api/v1/': process.env.BACKEND_URL || 'http://192.168.99.100:3000',
+    '/api/v1/': 'http://192.168.99.100:3000',
   },
 
   /*

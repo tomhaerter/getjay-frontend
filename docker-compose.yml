@@ -6,4 +6,5 @@ services:
     ports:
       - 3000:80
     environment:
-      - BACKEND_URL=http://backend:3000
+      - BACKEND_HOST=backend
+      - BACKEND_PORT=3000

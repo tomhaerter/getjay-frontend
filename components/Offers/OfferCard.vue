@@ -7,7 +7,7 @@
       </div>
       <div class="card-content absolute inset-0 text-white p-4 flex flex-col justify-end">
         <h3 class="text-xl font-bold">{{ offer.title }}</h3>
-        <p class="text-sm">Mo - Mi, 12:00 - 18:00</p>
+        <p class="text-sm opacity-75">Mo - Mi, 12:00 - 18:00</p>
       </div>
     </div>
   </nuxt-link>
