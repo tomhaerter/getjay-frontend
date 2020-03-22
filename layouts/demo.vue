@@ -54,12 +54,17 @@ import mobile from 'is-mobile'
 
 export default Vue.extend({
   mounted () {
+    document.body.classList.add('demo')
     if (mobile()) this.$router.replace('/')
-  }  
+  }
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+body.demo {
+  overflow: hidden;
+}
+
 .blob-1 {
   transform: scale(1.3);
   left: 100px;
