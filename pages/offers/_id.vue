@@ -1,5 +1,5 @@
 <template>
-  <div class="offer-wrapper -m-4 -mt-20">
+  <div class="offer-wrapper -m-4 -mt-20" :class="{ loggedin: user }">
     <div class="offer-card overflow-hidden relative">
       <div class="image-wrapper absolute inset-0">
         <img :src="offer.image" :alt="offer.title" />
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="px-4">
+    <div class="px-4 pb-3">
       <section class="flex pt-6 relative">
         <div class="payment rounded-full bg-salmon absolute right-4 text-white pt-5 text-center">
           <p class="font-semibold leading-none">10 €</p>
@@ -61,7 +61,7 @@
       </section>
     </div>
 
-    <div class="fixed i-want-to-help w-full bg-white border-top-gray border-t p-4">
+    <div class="fixed i-want-to-help w-full bg-white border-top-gray border-t p-4" v-if="user">
       <button class="w-full bg-pink py-3 font-semibold rounded-lg">Ich möchte helfen</button>
     </div>
   </div>
@@ -83,6 +83,12 @@ export default Vue.extend({
     return { offer }
   },
 
+  computed: {
+    user () {
+      return this.$accessor.user.user
+    },
+  },
+
   methods: {
     expressInterest () {
       // this.offer
@@ -92,7 +98,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.offer-wrapper {
+.offer-wrapper.loggedin {
   padding-bottom: 70px;
 }
 
