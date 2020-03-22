@@ -9,4 +9,5 @@ RUN yarn install && yarn cache clean --force
 ENV PATH=/data/node_modules/.bin:$PATH
 COPY . ./
 
-CMD ["nuxt"]
+RUN nuxt-ts build
+CMD ["nuxt-ts", "start"]
