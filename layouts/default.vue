@@ -212,6 +212,10 @@ export default Vue.extend({
 </script>
 
 <style>
+body.with-sheet {
+  overflow-y: hidden;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }

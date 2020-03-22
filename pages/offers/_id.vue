@@ -3,6 +3,7 @@
     <div class="offer-card overflow-hidden relative">
       <div class="image-wrapper absolute inset-0">
         <img :src="offer.imageURI" :alt="offer.title" class="object-cover w-full h-full"/>
+        <img :src="offer.imageURI" :alt="offer.title" />
         <div class="gradient absolute inset-0" />
       </div>
 
