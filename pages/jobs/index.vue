@@ -1,8 +1,10 @@
 <template>
   <div>
-    <portal to="title">
-      Meine Jobs
-    </portal>
+    <div class="pt-16 mb-4">
+      <h2 class="text-3xl font-bold leading-tight text-gray-900">
+        Meine Jobs
+      </h2>
+    </div>
 
     <!--<div class="filters mb-8 mt-2">
       <label for="search" class="sr-only">Suche</label>
@@ -26,11 +28,10 @@
               <img src="/" alt="Bauernhof Wieland">
             </div>
             <div class="relative top-px">
-              <p class="leading-none">
-                {{ ch.id }}
-              </p>
+              <p class="leading-none">{{ch.id}}</p>
               <p class="text-gray-400 text-xs leading-narrow">
-                {{ ch.messages[ch.messages.length-1].message.substr(0, 40) }}...
+                <span v-if="ch.messages[ch.messages.length-1]">{{ch.messages[ch.messages.length-1].message.substr(0, 40)}}</span>
+                <span v-else>Noch keine Nachrichten ausgetauscht</span>
               </p>
             </div>
             <div class="self-start text-xs text-gray-400 ml-auto pt-1">

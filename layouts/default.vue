@@ -82,8 +82,8 @@
     </nav>
     -->
 
-    <div class="pt-16">
-      <header>
+    <div>
+      <header class="hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="text-3xl font-bold leading-tight text-gray-900">
             <portal-target name="title" />
@@ -99,7 +99,7 @@
       </main>
     </div>
 
-    <login-card :open="openLogin" @close="openLogin = false" />
+    <login-sheet :open="openLogin" @close="openLogin = false" />
 
     <div v-if="!user" class="fixed inset-x-0 cursor-pointer" style="bottom: 68px;" @click="openLogin = true">
       <div class="bg-pink text-petrol">
@@ -166,11 +166,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import mobile from 'is-mobile'
-import LoginCard from '~/components/LoginCard.vue'
+import LoginSheet from '~/components/LoginSheet.vue'
 
 export default Vue.extend({
   components: {
-    LoginCard,
+    LoginSheet,
   },
 
   data () {
@@ -212,6 +212,10 @@ export default Vue.extend({
 </script>
 
 <style>
+body.with-sheet {
+  overflow-y: hidden;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }

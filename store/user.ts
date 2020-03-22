@@ -31,14 +31,14 @@ export const mutations = mutationTree(state, {
 
 export const actions = actionTree({ state, mutations }, {
   async toggleBookmark ({ commit, state }, offer: IJobOffer) {
-    await this.$axios.post(`jobOffer/${offer.id}/bookmark`)
-
     const bookmarks = Array.from(state.bookmarks)
     const index = bookmarks.map(o => o.id).indexOf(offer.id)
     if (index === -1) {
       bookmarks.push(offer)
+      await this.$axios.post(`jobOffer/${offer.id}/bookmark`)
     } else {
       bookmarks.splice(index, 1)
+      await this.$axios.post(`jobOffer/${offer.id}/unbookmark`)
     }
 
     commit('setBookmarks', bookmarks)

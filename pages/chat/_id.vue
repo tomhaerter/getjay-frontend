@@ -1,9 +1,10 @@
 <template>
-  <div class="message-container">
-    <div class="messages">
-      <div v-for="msg in conversation.messages" :key="msg.id" class="message" :class="{me: isMessageAuthor(msg)}">
-        {{ msg.message }}
-      </div>
+  <div class="msgs pt-16">
+    <div class="msg" v-for="msg in conversation.messages" :key="msg.id">
+      {{msg.message}}
+      {{msg.createdAt}}
+      <br>
+      <br>
     </div>
 
     <div class="message-input">
