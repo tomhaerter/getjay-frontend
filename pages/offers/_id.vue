@@ -2,7 +2,7 @@
   <div class="offer-wrapper -m-4 -mt-20" :class="{ loggedin: user }">
     <div class="offer-card overflow-hidden relative">
       <div class="image-wrapper absolute inset-0">
-        <img :src="offer.image" :alt="offer.title" />
+        <img :src="offer.imageURI" :alt="offer.title" class="object-cover w-full h-full"/>
         <div class="gradient absolute inset-0" />
       </div>
 
@@ -62,7 +62,7 @@
     </div>
 
     <div class="fixed i-want-to-help w-full bg-white border-top-gray border-t p-4" v-if="user">
-      <button class="w-full bg-pink py-3 font-semibold rounded-lg">Ich möchte helfen</button>
+      <button class="w-full bg-pink py-3 font-semibold rounded-lg" @click="acceptOffer">Ich möchte helfen</button>
     </div>
   </div>
 </template>
@@ -72,26 +72,34 @@ import Vue from 'vue'
 import { IJobOffer } from '~/types'
 import OfferCard from '~/components/Offers/OfferCard.vue'
 
+type PageData = {
+  offer?: IJobOffer
+}
+
 export default Vue.extend({
   components: {
     OfferCard,
   },
 
+  data(): PageData {
+    return {}
+  },
   async asyncData ({ params, $axios }) {
-    const { data: offer } = await $axios.get(`jobOffer/${params.id}`)
-    
+    const { data: offer } = await $axios.get(`jobOffer/${params.id}`);
+
     return { offer }
+  },
+
+  methods: {
+    async acceptOffer() {
+      const {data: msg } = await this.$axios.post(`jobOffer/${this.offer?.id}/accept`);
+      await this.$router.push(`/chat/${msg.jobOfferId}`)
+    }
   },
 
   computed: {
     user () {
       return this.$accessor.user.user
-    },
-  },
-
-  methods: {
-    expressInterest () {
-      // this.offer
     },
   },
 })

@@ -2,7 +2,7 @@
   <nuxt-link :to="`/offers/${offer.id}`" :title="`Mehr über '${offer.title}' erfahren`">
     <div class="offer-card rounded-lg overflow-hidden relative">
       <div class="image-wrapper absolute inset-0">
-        <img :src="offer.imageURI" :alt="offer.title" />
+        <img :src="offer.imageURI" :alt="offer.title" class="object-cover w-full h-full"/>
         <div class="gradient absolute inset-0" />
       </div>
       <div class="card-content absolute inset-0 text-white p-4 pb-3 flex flex-col justify-end">
@@ -34,7 +34,7 @@ export default Vue.extend({
       default: 800,
     },
   },
-  
+
   methods: {
     async toggleBookmark () {
       await this.$accessor.user.toggleBookmark(this.offer)
