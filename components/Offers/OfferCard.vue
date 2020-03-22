@@ -47,8 +47,7 @@ export default Vue.extend({
     },
 
     isBookmarked (): boolean {
-      const bookmarks = this.$accessor.user.bookmarks
-      return bookmarks.map(o => o.id).indexOf(this.offer.id) !== -1
+      return this.$accessor.user.bookmarkedIDs.indexOf(this.offer.id) !== -1
     },
   },
 })

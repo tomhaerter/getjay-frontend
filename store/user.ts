@@ -1,4 +1,4 @@
-import { getAccessorType, mutationTree, actionTree } from 'typed-vuex'
+import { getAccessorType, mutationTree, actionTree, getterTree } from 'typed-vuex'
 import * as firebase from 'firebase'
 import { IJobOffer } from '~/types'
 
@@ -45,8 +45,15 @@ export const actions = actionTree({ state, mutations }, {
   },
 })
 
+export const getters = getterTree(state, {
+  bookmarkedIDs (state) {
+    return state.bookmarks.map(offer => offer.id)
+  },
+})
+
 export const accessorType = getAccessorType({
   state,
   actions,
   mutations,
+  getters,
 })
