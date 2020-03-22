@@ -1,5 +1,5 @@
 <template>
-  <div class="-m-4 -mt-20">
+  <div class="offer-wrapper -m-4 -mt-20">
     <div class="offer-card overflow-hidden relative">
       <div class="image-wrapper absolute inset-0">
         <img :src="offer.image" :alt="offer.title" />
@@ -36,8 +36,8 @@
         </div>
       </section>
 
-      <section class="mt-8">
-        <h3 class="font-bold mb-2">Ihre Aufgaben</h3>
+      <section class="mt-10">
+        <h3 class="font-semibold mb-2">Ihre Aufgaben</h3>
         <ul>
           <li class="mb-2 leading-tight">Spargelstechen</li>
           <li class="leading-tight">Zum Teil körperlich anstrengende Tätigkeiten</li>
@@ -45,20 +45,24 @@
       </section>
 
       <section class="mt-8">
-        <h3 class="font-bold mb-2">Beschreibung</h3>
+        <h3 class="font-semibold mb-2">Beschreibung</h3>
         <div class="">
           Bauernhof Wieland zählt mit über 10.000 Mitarbeitern in über 110 Geschäftsstellen zu den führenden Personaldienstleistern in Deutschland. Unser Kundenspektrum umfasst kleine und mittelständische Betriebe genau wie Großunternehmen aller Branchen. Seit 1984 bieten wir gute Jobs, ein starkes Netzwerk und echte Perspektiven auf dem Arbeitsmarkt.
         </div>
       </section>
 
       <section class="mt-8">
-        <h3 class="font-bold mb-2">Anforderungen</h3>
+        <h3 class="font-semibold mb-2">Anforderungen</h3>
         <ul>
           <li class="mb-2 leading-tight">Berufserfahrung als Landwirtschaftshelfer (m/w/d)</li>
           <li class="mb-2 leading-tight">Keine Angst vor Arbeit im Freien</li>
           <li class="mb-2 leading-tight">Belastbarkeit, Ausdauer und Motivation</li>
         </ul>
       </section>
+    </div>
+
+    <div class="fixed i-want-to-help w-full bg-white border-top-gray border-t p-4">
+      <button class="w-full bg-pink py-3 font-semibold rounded-lg">Ich möchte helfen</button>
     </div>
   </div>
 </template>
@@ -88,6 +92,10 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.offer-wrapper {
+  padding-bottom: 70px;
+}
+
 .offer-card {
   height: 0;
   padding-bottom: 60%;
@@ -124,5 +132,9 @@ ul li::after {
   background-color: #E38466;
   left: -20px;
   top: 6px;
+}
+
+.i-want-to-help {
+  bottom: 68px;
 }
 </style>
