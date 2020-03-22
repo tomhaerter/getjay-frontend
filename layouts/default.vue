@@ -134,7 +134,7 @@
           <p>Übersicht</p>
         </nuxt-link>
         <nuxt-link
-          to="/offers"
+          to="/jobs"
           class="w-1/3 h-full flex flex-col justify-center text-center"
           :class="{ 'text-salmon': page == 'jobs' }"
         >
