@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="px-4 pb-3">
+    <div class="px-4 pt-6 pb-3">
       <employer-banner :offer="offer" />
 
       <section class="mt-10">
@@ -74,16 +74,18 @@ export default Vue.extend({
   data(): PageData {
     return {}
   },
+
   async asyncData ({ params, $axios }) {
-    const { data: offer } = await $axios.get(`jobOffer/${params.id}`);
+    const { data: offer } = await $axios.get(`jobOffer/${params.id}`)
 
     return { offer }
   },
 
   methods: {
-    async acceptOffer() {
-      const {data: msg } = await this.$axios.post(`jobOffer/${this.offer?.id}/accept`);
-      await this.$router.push(`/chat/${msg.jobOfferId}`)
+    async acceptOffer () {
+      const { data: msg } = await this.$axios.post(`jobOffer/${this.offer!.id}/accept`)
+      console.log(msg)
+      await this.$router.push(`/jobs/${msg.jobOfferId}/chat`)
     }
   },
 

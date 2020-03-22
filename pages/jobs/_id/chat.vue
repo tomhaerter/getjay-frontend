@@ -1,5 +1,5 @@
 <template>
-  <div class="chat">
+  <div class="chat-messages">
     <div class="flex flex-col h-full bg-red">
       <div class="flex pt-12">
         <div class="flex-1 justify-center">
@@ -165,7 +165,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.chat {
+.chat-messages {
   height: calc(100vh - 70px);
 
   .message-list::-webkit-scrollbar {

@@ -25,7 +25,9 @@
         <nuxt-link :to="`jobs/${ch.jobOfferId}/chat`">
           <div class="py-2 flex job items-center">
             <div class="image mr-2">
-              <img src="/" alt="Bauernhof Wieland">
+              <div class="image rounded-full bg-catskills overflow-hidden flex items-center justify-center">
+                <img src="~/assets/bauer-logo.png" alt="Bauernhof Wieland" />
+              </div>
             </div>
 
             <div class="relative top-px flex-1 min-w-0">
