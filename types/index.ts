@@ -1,5 +1,5 @@
 export type Offer = {
-  id: string | number,
+  id: string,
   title: string,
 }
 

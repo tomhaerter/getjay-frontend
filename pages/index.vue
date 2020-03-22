@@ -2,7 +2,7 @@
   <div>
     <portal to="title">Übersicht</portal>
 
-    <div class="filters mb-8 mt-2">
+    <div class="filters mb-6 mt-2">
       <label for="search" class="sr-only">Suche</label>
       <div class="relative">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -12,9 +12,13 @@
       </div>
     </div>
 
-    <div class="pills">
-      <!-- Alle Jobs -->
-      <!-- Gespeicherte Jobs -->
+    <div class="pills mb-6" v-if="user">
+      <button class="p-1 px-2 rounded-lg focus:outline-none" :class="mode == 'all' ? 'bg-pink font-semibold tracking-wide' : 'text-gray-400'" @click="mode = 'all'">
+        Alle Jobs
+      </button>
+      <button class="p-1 px-2 rounded-lg focus:outline-none" :class="mode == 'saved' ? 'bg-pink font-semibold tracking-wide' : 'text-gray-400'" @click="mode = 'saved'">
+        Gespeicherte Jobs
+      </button>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -35,14 +39,40 @@ export default Vue.extend({
 
   data () {
     return {
-      offers: [] as Offer[],
+      allOffers: [] as Offer[],
+      savedOffers: [] as Offer[],
       limit: 20,
       offset: 0,
+      mode: 'all',
     }
   },
 
   mounted () {
     this.loadData()
+  },
+
+  watch: {
+    bookmarkedOfferIDs: {
+      immediate: true,
+      async handler () {
+        const { data } = await this.$axios.get('user/me/bookmarkedJobOffers')
+        this.savedOffers = data
+      },
+    },
+  },
+
+  computed: {
+    user () {
+      return this.$accessor.user.user
+    },
+
+    bookmarkedOfferIDs (): string[] {
+      return this.$accessor.user.bookmarks
+    },
+
+    offers (): Offer[] {
+      return this.mode === 'all' ? this.allOffers : this.savedOffers
+    }
   },
 
   methods: {
@@ -52,10 +82,10 @@ export default Vue.extend({
 
       if (offset < this.offset) {
         this.offset = 0
-        this.offers = data
+        this.allOffers = data
       } else {
         this.offset += this.limit
-        this.offers.push(...data)
+        this.allOffers.push(...data)
       }
     },
   },
