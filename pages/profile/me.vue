@@ -10,7 +10,6 @@ export default Vue.extend({
   components: {
     ProfileContent,
   },
-  
   data () {
     return {
       user: {},
