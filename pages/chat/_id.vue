@@ -1,10 +1,9 @@
 <template>
-  <div class="msgs pt-16">
-    <div class="msg" v-for="msg in conversation.messages" :key="msg.id">
-      {{msg.message}}
-      {{msg.createdAt}}
-      <br>
-      <br>
+  <div class="message-container pt-16">
+    <div class="messages">
+      <div v-for="msg in conversation.messages" :key="msg.id" class="message" :class="{me: isMessageAuthor(msg)}">
+        {{ msg.message }}
+      </div>
     </div>
 
     <div class="message-input">
@@ -15,9 +14,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { IConversation } from '~/types'
-import OfferCard from '~/components/Offers/OfferCard.vue'
+  import Vue from 'vue'
+  import { IConversation } from '~/types'
+  import OfferCard from '~/components/Offers/OfferCard.vue'
 
   type PageData = {
     conversation?: IConversation,
@@ -25,59 +24,59 @@ import OfferCard from '~/components/Offers/OfferCard.vue'
     refreshID: number
   }
 
-export default Vue.extend({
-  components: {
-    OfferCard,
-  },
-
-  async asyncData ({ params, $axios }) {
-    const { data: conversation } = await $axios.get(`chat/${params.id}`)
-
-    return { conversation }
-  },
-
-  data (): PageData {
-    return {
-      chatMessage: '',
-      refreshID: -1
-    }
-  },
-
-  computed: {
-    user () {
-      return this.$accessor.user.user
+  export default Vue.extend({
+    components: {
+      OfferCard,
     },
-  },
 
-  mounted () {
-    this.refreshID = setInterval(this.refresh, 1000) as unknown as number
-  },
-  beforeDestroy () {
-    clearInterval(this.refreshID)
-  },
+    async asyncData ({ params, $axios }) {
+      const { data: conversation } = await $axios.get(`chat/${params.id}`)
 
-  methods: {
-    async sendMessage () {
-      if (this.chatMessage.length > 0) {
-        const { data: msg } = await this.$axios.post(`chat/${this.conversation?.jobOfferId}/send`, { message: this.chatMessage })
-        // eslint-disable-next-line no-unused-expressions
-        this.conversation?.messages.push(msg)
-        this.chatMessage = ''
+      return { conversation }
+    },
+
+    data (): PageData {
+      return {
+        chatMessage: '',
+        refreshID: -1
       }
     },
-    async refresh () {
-      const { data: conversation } = await this.$axios.get(`chat/${this.conversation?.jobOfferId}`)
 
-      this.conversation = conversation
+    computed: {
+      user () {
+        return this.$accessor.user.user
+      },
     },
-    isMessageAuthor (msg : any) {
-      if (this.conversation) {
-        return msg.authorId === this.conversation.workerId
+
+    mounted () {
+      this.refreshID = setInterval(this.refresh, 1000) as unknown as number
+    },
+    beforeDestroy () {
+      clearInterval(this.refreshID)
+    },
+
+    methods: {
+      async sendMessage () {
+        if (this.chatMessage.length > 0) {
+          const { data: msg } = await this.$axios.post(`chat/${this.conversation?.jobOfferId}/send`, { message: this.chatMessage })
+          // eslint-disable-next-line no-unused-expressions
+          this.conversation?.messages.push(msg)
+          this.chatMessage = ''
+        }
+      },
+      async refresh () {
+        const { data: conversation } = await this.$axios.get(`chat/${this.conversation?.jobOfferId}`)
+
+        this.conversation = conversation
+      },
+      isMessageAuthor (msg : any) {
+        if (this.conversation) {
+          return msg.authorId === this.conversation.workerId
+        }
+        return false
       }
-      return false
-    }
-  },
-})
+    },
+  })
 </script>
 
 <style scoped lang="sass">
@@ -115,6 +114,6 @@ export default Vue.extend({
 
       i
         font-size: 24px
-    //
+  //
 
 </style>
