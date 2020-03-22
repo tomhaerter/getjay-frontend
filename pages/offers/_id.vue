@@ -99,7 +99,7 @@ export default Vue.extend({
 
 <style scoped>
 .offer-wrapper.loggedin {
-  padding-bottom: 70px;
+  padding-bottom: 90px;
 }
 
 .offer-card {
