@@ -22,7 +22,7 @@
       </h3>
 
       <div v-for="ch in chat" :key="ch.id" class="chat">
-        <nuxt-link :to="`chat/${ch.jobOfferId}`">
+        <nuxt-link :to="`jobs/${ch.jobOfferId}/chat`">
           <div class="py-2 flex job items-center">
             <div class="image mr-2">
               <img src="/" alt="Bauernhof Wieland">

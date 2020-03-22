@@ -24,17 +24,7 @@
     </div>
 
     <div class="px-4 pb-3">
-      <section class="flex pt-6 relative">
-        <img src="" class="rounded-full" width="50" height="50" />
-        <div class="ml-4">
-          <h3 class="font-semibold text-l leading-narrow">Bauernhof Wieland</h3>
-          <p class="text-xs">Dorfstraße Nr. 14, 23769 Fehmarn</p>
-
-          <div class="categories mt-2">
-            <span class="text-xs text-white bg-petrol rounded-md uppercase py-1 px-2">Landwirtschaft</span>
-          </div>
-        </div>
-      </section>
+      <employer-banner :offer="offer" />
 
       <section class="mt-10">
         <h3 class="font-semibold mb-2">Ihre Aufgaben</h3>
@@ -69,6 +59,7 @@
 import Vue from 'vue'
 import { IJobOffer } from '~/types'
 import OfferCard from '~/components/Offers/OfferCard.vue'
+import EmployerBanner from '~/components/Offers/EmployerBanner.vue'
 
 type PageData = {
   offer?: IJobOffer
@@ -77,6 +68,7 @@ type PageData = {
 export default Vue.extend({
   components: {
     OfferCard,
+    EmployerBanner,
   },
 
   data(): PageData {

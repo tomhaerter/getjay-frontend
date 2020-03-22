@@ -91,10 +91,8 @@
         </div>
       </header>
       <main>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div class="px-4 py-8 pt-0">
-            <nuxt />
-          </div>
+        <div class="max-w-7xl mx-auto sm:px-6 px-4">
+          <nuxt />
         </div>
       </main>
     </div>
