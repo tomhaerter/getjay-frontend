@@ -1,5 +1,9 @@
 <template>
-  <div class="bg-gray-50 overflow-hidden h-screen">
+  <div class="bg-gray-50 overflow-hidden h-screen text-petrol">
+    <svg class="absolute blob-1" width="737" height="1073" viewBox="0 0 737 1073" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M360.081 88.0455C418.6 110.022 462.13 173.594 498.748 231.122C535.426 288.818 565.359 340.412 585.361 399.178C605.364 457.945 615.375 523.718 614.937 605.759C614.727 687.908 604.006 786.159 551.815 850.804C499.684 915.616 405.915 946.883 312.368 949.259C218.989 951.575 126.001 924.939 60.7243 869.948C-4.55193 814.957 -42.344 731.504 -89.2732 650.58C-136.202 569.656 -192.557 490.985 -192.818 412.796C-192.911 334.547 -137.139 256.672 -69.8467 205.55C-2.72265 154.488 76.0883 130.119 152.133 108.071C228.177 86.023 301.791 66.1765 360.081 88.0455Z" fill="#FCE9E4"/>
+    </svg>
+
     <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-screen-xl">
       <svg class="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4" width="404" height="784" fill="none" viewBox="0 0 404 784">
         <defs>
@@ -12,66 +16,14 @@
 
       <div class="relative mt-4 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
         <div class="relative">
-          <h4 class="text-2xl leading-8 font-extrabold text-gray-900 tracking-tight sm:text-3xl sm:leading-9">
-            Transfer funds world-wide
+          <img class="mb-24 -mt-16" width="160" src="~/assets/jay-logo.svg">
+        
+          <h4 class="text-6xl font-semibold tracking-tight" style="line-height: 4rem;">
+            Jetzt kommt es auf Dich an!
           </h4>
-          <p class="mt-3 text-lg leading-7 text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur minima sequi recusandae, porro maiores officia assumenda aliquam laborum ab aliquid veritatis impedit odit adipisci optio iste blanditiis facere. Totam, velit.
+          <p class="mt-3 text-lg leading-7 ">
+            Das Coronavirus verändert unsere Welt und unseren Arbeitsmarkt. Wenn du also gerade deinen Job verloren hast oder nur noch eingeschränkt ausüben kannst, hast du nun die Chance in Bereichen auszuhelfen, in denen Hilfe gerade dringend benötigt wird.
           </p>
-
-          <ul class="mt-10">
-            <li>
-              <div class="flex">
-                <div class="flex-shrink-0">
-                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="ml-4">
-                  <h5 class="text-lg leading-6 font-medium text-gray-900">Competitive exchange rates</h5>
-                  <p class="mt-2 text-base leading-6 text-gray-500">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="mt-10">
-              <div class="flex">
-                <div class="flex-shrink-0">
-                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="ml-4">
-                  <h5 class="text-lg leading-6 font-medium text-gray-900">No hidden fees</h5>
-                  <p class="mt-2 text-base leading-6 text-gray-500">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="mt-10">
-              <div class="flex">
-                <div class="flex-shrink-0">
-                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="ml-4">
-                  <h5 class="text-lg leading-6 font-medium text-gray-900">Transfers are instant</h5>
-                  <p class="mt-2 text-base leading-6 text-gray-500">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ul>
         </div>
 
         <div class="mt-10 -mx-4 relative lg:mt-0">
@@ -92,16 +44,6 @@
           </div>
         </div>
       </div>
-
-      <svg class="hidden lg:block absolute right-full transform translate-x-1/2 translate-y-12" width="404" height="784" fill="none" viewBox="0 0 404 784">
-        <defs>
-          <pattern id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
-          </pattern>
-        </defs>
-        <rect width="404" height="784" fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
-      </svg>
-
     </div>
   </div>
 </template>
@@ -117,7 +59,17 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+body, #__layout, #__nuxt {
+  overflow: hidden;
+}
+
+.blob-1 {
+  transform: scale(1.3);
+  left: 100px;
+  top: 40%;
+}
+
 .iphone-x {
   position: relative;
   margin: 40px auto;

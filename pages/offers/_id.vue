@@ -18,7 +18,7 @@
       </div>
 
       <div class="payment rounded-full bg-salmon absolute right-4 text-white pt-5 text-center">
-        <p class="font-semibold leading-none">10 €</p>
+        <p class="font-semibold leading-none">{{ offer.payment }} €</p>
         <p class="interval font-thin opacity-75 leading-tight">/Std.</p>
       </div>
     </div>
@@ -46,9 +46,7 @@
 
       <section class="mt-8">
         <h3 class="font-semibold mb-2">Beschreibung</h3>
-        <div class="">
-          Bauernhof Wieland zählt mit über 10.000 Mitarbeitern in über 110 Geschäftsstellen zu den führenden Personaldienstleistern in Deutschland. Unser Kundenspektrum umfasst kleine und mittelständische Betriebe genau wie Großunternehmen aller Branchen. Seit 1984 bieten wir gute Jobs, ein starkes Netzwerk und echte Perspektiven auf dem Arbeitsmarkt.
-        </div>
+        <div v-html="offer.description" />
       </section>
 
       <section class="mt-8">
