@@ -87,7 +87,12 @@ const config: Configuration = {
   pwa: {
     // disable the modules you don't need
     meta: false,
-    icon: false,
+    manifest: {
+      name: 'JAY',
+      short_name: 'JAY',
+      theme_color: '#E38466',
+    },
+    icon: true,
     // if you omit a module key form configuration sensible defaults will be applied
     // manifest: false,
 
