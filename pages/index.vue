@@ -5,13 +5,13 @@
         Übersicht
       </h2>
 
-      <div class="filters mb-6 mt-2 flex">
+      <div class="filters mt-2 flex" :class="{ 'mb-4': user }">
         <label for="search" class="sr-only">Suche</label>
         <div class="relative flex-1">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <i class="far fa-search" />
           </div>
-          <input id="search" class="block w-full pl-10 pr-3 py-2 bg-catskills rounded-md leading-5 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:text-sm transition duration-150 ease-in-out" placeholder="Suche nach Jobs" />
+          <input id="search" v-model="searchString" class="block w-full pl-10 pr-3 py-2 bg-catskills rounded-md leading-5 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:text-sm transition duration-150 ease-in-out" placeholder="Suche nach Jobs" />
         </div>
 
         <button class="block px-3 py-1 rounded-md bg-catskills ml-2 focus:outline-none" @click="filtersVisible = true">
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
       <offer-card v-for="offer in offers" :key="offer.id" :offer="offer" />
       <div class="pt-3 px-6 text-center leading-narrow" v-if="!offers.length">
         Zu diesen Filtern konnten leider keine Ergebnisse gefunden werden.
@@ -45,6 +45,7 @@ import Vue from 'vue'
 import OfferCard from '~/components/Offers/OfferCard.vue'
 import FilterList from '~/components/FilterList.vue'
 import { IJobOffer } from '~/types'
+import { debounce } from 'lodash'
 
 export default Vue.extend({
   components: {
@@ -61,11 +62,16 @@ export default Vue.extend({
       mode: 'all',
       filtersVisible: false,
       filters: {},
+      searchString: '',
     }
   },
 
   mounted () {
     this.loadData()
+
+    this.$watch('searchString', debounce((newValue: string) => {
+      this.loadData(0)
+    }, 500, { trailing: true }))
   },
 
   computed: {
@@ -85,15 +91,16 @@ export default Vue.extend({
   methods: {
     async loadData (offset: number = 0) {
       if (process.server) return
-      const { data } = await this.$axios.get('jobOffer')
 
-      if (offset < this.offset) {
-        this.offset = 0
-        this.allOffers = data
-      } else {
-        this.offset += this.limit
-        this.allOffers.push(...data)
-      }
+      const { data } = await this.$axios.get('jobOffer', {
+        params: {
+          search: this.searchString,
+        }
+      })
+
+      // In our demo we don't have enough entries for true pagination / infinite scrolling.
+      // @TODO: Implement in the future
+      this.allOffers = data
     },
 
     updateFilters (filters: object) {

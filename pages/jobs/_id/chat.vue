@@ -49,10 +49,10 @@
         </div>
       </div>
 
-      <div class="input-window bg-gray-100 p-4 flex -mx-4">
+      <form @submit.prevent="submit" class="input-window bg-gray-100 p-4 flex -mx-4 -mb-px">
         <input type="text" v-model="chatMessage" class="focus:outline-none bg-catskills rounded-lg p-2 flex-1">
-        <button class="p-2 ml-2 -mr-2 text-salmon focus:outline-none" @click="submit"><i class="far fa-paper-plane" /></button>  
-      </div>
+        <button class="p-2 ml-2 -mr-2 text-salmon focus:outline-none" type="submit"><i class="far fa-paper-plane" /></button>  
+      </form>
     </div>
   </div>
 </template>
@@ -213,10 +213,6 @@ export default Vue.extend({
     .category {
       @apply text-petrol bg-catskills font-semibold;
     }
-  }
-
-  .input-window {
-    bottom: 68px;
   }
 }
 </style>
