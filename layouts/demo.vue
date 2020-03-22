@@ -59,11 +59,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
-body, #__layout, #__nuxt {
-  overflow: hidden;
-}
-
+<style scoped lang="scss">
 .blob-1 {
   transform: scale(1.3);
   left: 100px;
