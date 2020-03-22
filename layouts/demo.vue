@@ -106,6 +106,17 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+import mobile from 'is-mobile'
+
+export default Vue.extend({
+  mounted () {
+    if (mobile()) this.$router.replace('/')
+  }  
+})
+</script>
+
 <style scoped lang="scss">
 .iphone-x {
   position: relative;
