@@ -121,6 +121,7 @@ export default Vue.extend({
   mounted () {
     // Dirty polling for now
     this.refreshInterval = window.setInterval(() => this.refresh(), 1000)
+    this.scrollToBottom()
   },
 
   beforeDestroy () {

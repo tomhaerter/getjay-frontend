@@ -21,19 +21,23 @@
         Aktiv
       </h3>
 
-      <div v-for="ch in chat" :key="ch.id" class="chat">
+      <div v-for="ch in chats" :key="ch.id" class="chat">
         <nuxt-link :to="`jobs/${ch.jobOfferId}/chat`">
           <div class="py-2 flex job items-center">
             <div class="image mr-2">
               <img src="/" alt="Bauernhof Wieland">
             </div>
-            <div class="relative top-px">
-              <p class="leading-none">{{ch.id}}</p>
-              <p class="text-gray-400 text-xs leading-narrow">
-                <span v-if="ch.messages[ch.messages.length-1]">{{ch.messages[ch.messages.length-1].message.substr(0, 40)}}</span>
+
+            <div class="relative top-px flex-1 min-w-0">
+              <p class="leading-none">{{ ch.jobOffer.title }}</p>
+              <p class="text-gray-400 text-xs leading-narrow pr-2 truncate">
+                <span v-if="ch.messages[ch.messages.length-1]">
+                  {{ ch.messages[ch.messages.length-1].message.substr(0, 60) }}
+                </span>
                 <span v-else>Noch keine Nachrichten ausgetauscht</span>
               </p>
             </div>
+
             <div class="self-start text-xs text-gray-400 ml-auto pt-1">
               14:31 <i class="fas fa-chevron-right ml-1" />
             </div>
@@ -80,9 +84,15 @@ import Vue from 'vue'
 
 export default Vue.extend({
   async asyncData ({ $axios }) {
-    const { data: chat } = await $axios.get('chat')
-
-    return { chat }
+    const { data } = await $axios.get('chat')
+    
+    const chats = await Promise.all(data.map(async (chat: any) => {
+      const { data: jobOffer } = await $axios.get(`jobOffer/${chat.jobOfferId}`)
+      
+      return { ...chat, jobOffer }
+    }))
+    console.log(chats)
+    return { chats }
   },
 })
 </script>
