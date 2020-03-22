@@ -33,7 +33,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import OfferCard from '~/components/Offers/OfferCard.vue'
-import { Offer } from '~/types'
+import { IJobOffer } from '~/types'
 
 export default Vue.extend({
   components: {
@@ -42,8 +42,8 @@ export default Vue.extend({
 
   data () {
     return {
-      allOffers: [] as Offer[],
-      savedOffers: [] as Offer[],
+      allOffers: [] as IJobOffer[],
+      savedOffers: [] as IJobOffer[],
       limit: 20,
       offset: 0,
       mode: 'all',
@@ -54,27 +54,17 @@ export default Vue.extend({
     this.loadData()
   },
 
-  watch: {
-    bookmarkedOfferIDs: {
-      immediate: true,
-      async handler () {
-        const { data } = await this.$axios.get('user/me/bookmarkedJobOffers')
-        this.savedOffers = data
-      },
-    },
-  },
-
   computed: {
     user () {
       return this.$accessor.user.user
     },
 
-    bookmarkedOfferIDs (): string[] {
+    bookmarkedOffers (): IJobOffer[] {
       return this.$accessor.user.bookmarks
     },
 
-    offers (): Offer[] {
-      return this.mode === 'all' ? this.allOffers : this.savedOffers
+    offers (): IJobOffer[] {
+      return this.mode === 'all' ? this.allOffers : this.bookmarkedOffers
     }
   },
 

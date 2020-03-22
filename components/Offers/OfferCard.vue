@@ -20,13 +20,13 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Offer } from '~/types'
+import { IJobOffer } from '~/types'
 import { UserInfo } from 'firebase'
 
 export default Vue.extend({
   props: {
     offer: {
-      type: Object as PropType<Offer>,
+      type: Object as PropType<IJobOffer>,
       required: true,
     },
     width: {
@@ -37,7 +37,7 @@ export default Vue.extend({
   
   methods: {
     async toggleBookmark () {
-      await this.$accessor.user.toggleBookmark(this.offer.id)
+      await this.$accessor.user.toggleBookmark(this.offer)
     },
   },
 
@@ -48,7 +48,7 @@ export default Vue.extend({
 
     isBookmarked (): boolean {
       const bookmarks = this.$accessor.user.bookmarks
-      return bookmarks.indexOf(this.offer.id) !== -1
+      return bookmarks.map(o => o.id).indexOf(this.offer.id) !== -1
     },
   },
 })

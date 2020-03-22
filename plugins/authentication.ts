@@ -10,7 +10,7 @@ const authPlugin: Plugin = ({ app, $axios }) => {
       app.$accessor.user.setIdToken(idToken)
 
       const { data: offers } = await $axios.get(`user/me/bookmarkedJobOffers`)
-      app.$accessor.user.setBookmarks((offers as IJobOffer[]).map(offer => offer.id))
+      app.$accessor.user.setBookmarks(offers as IJobOffer[])
     }
   })
 }

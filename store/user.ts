@@ -1,11 +1,12 @@
 import { getAccessorType, mutationTree, actionTree } from 'typed-vuex'
 import * as firebase from 'firebase'
+import { IJobOffer } from '~/types'
 
 export const state = () => ({
   user: undefined as firebase.UserInfo | undefined,
   idToken: '' as string,
   demoMode: false,
-  bookmarks: [] as string[],
+  bookmarks: [] as IJobOffer[],
 })
 
 export type RootState = ReturnType<typeof state>
@@ -23,19 +24,19 @@ export const mutations = mutationTree(state, {
     state.demoMode = true
   },
 
-  setBookmarks (state, newBookmarks: string[]) {
+  setBookmarks (state, newBookmarks: IJobOffer[]) {
     state.bookmarks = newBookmarks
   },
 })
 
 export const actions = actionTree({ state, mutations }, {
-  async toggleBookmark ({ commit, state }, id: string) {
-    await this.$axios.post(`jobOffer/${id}/bookmark`)
+  async toggleBookmark ({ commit, state }, offer: IJobOffer) {
+    await this.$axios.post(`jobOffer/${offer.id}/bookmark`)
 
     const bookmarks = Array.from(state.bookmarks)
-    const index = bookmarks.indexOf(id)
+    const index = bookmarks.map(o => o.id).indexOf(offer.id)
     if (index === -1) {
-      bookmarks.push(id)
+      bookmarks.push(offer)
     } else {
       bookmarks.splice(index, 1)
     }

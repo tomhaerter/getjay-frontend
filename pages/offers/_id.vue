@@ -69,7 +69,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Offer } from '~/types'
+import { IJobOffer } from '~/types'
 import OfferCard from '~/components/Offers/OfferCard.vue'
 
 export default Vue.extend({

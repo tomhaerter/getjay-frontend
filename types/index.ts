@@ -1,8 +1,3 @@
-export type Offer = {
-  id: string,
-  title: string,
-}
-
 // @TODO: require the backend and use its types natively,
 // rather than copied in here.
 export type IJobOffer = {
