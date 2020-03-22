@@ -19,7 +19,7 @@
         </button>
       </div>
 
-      <filter-list :filters="filters" @close="filtersVisible = false" @save="updateFilters" :open="filtersVisible" />
+      <filter-list :filters="filters" @close="filtersClose" @save="updateFilters" :open="filtersVisible" />
 
       <div class="pills" v-if="user">
         <button class="p-1 px-2 rounded-lg focus:outline-none" :class="mode == 'all' ? 'bg-pink font-semibold tracking-wide' : 'text-gray-400'" @click="mode = 'all'">
@@ -61,7 +61,9 @@ export default Vue.extend({
       offset: 0,
       mode: 'all',
       filtersVisible: false,
-      filters: {},
+      filters: {
+        categories: []
+      },
       searchString: '',
     }
   },
@@ -95,6 +97,7 @@ export default Vue.extend({
       const { data } = await this.$axios.get('jobOffer', {
         params: {
           search: this.searchString,
+          categories: this.filters.categories,
         }
       })
 
@@ -103,9 +106,14 @@ export default Vue.extend({
       this.allOffers = data
     },
 
-    updateFilters (filters: object) {
-      this.filters = filters
+    async updateFilters(filters: any) {
+      this.filters.categories = filters["categories"]
+      await this.loadData()
     },
+    async filtersClose() {
+      this.filtersVisible = false
+      await this.loadData()
+    }
   },
 })
 </script>
