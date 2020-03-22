@@ -101,7 +101,7 @@
 
     <login-card :open="openLogin" @close="openLogin = false" />
 
-    <div class="fixed inset-x-0 cursor-pointer" style="bottom: 68px;" @click="openLogin = true" v-if="!user">
+    <div v-if="!user" class="fixed inset-x-0 cursor-pointer" style="bottom: 68px;" @click="openLogin = true">
       <div class="bg-pink text-petrol">
         <div class="max-w-screen-xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between flex-wrap">
@@ -130,23 +130,32 @@
           class="w-1/3 h-full flex flex-col justify-center text-center"
           :class="{ 'text-salmon': page == 'overview' }"
         >
-          <p class="text-xl"><i class="far fa-house" /></p>
+          <p class="text-xl">
+            <i class="far fa-house" />
+          </p>
           <p>Übersicht</p>
         </nuxt-link>
+
         <nuxt-link
+          v-if="user"
           to="/jobs"
           class="w-1/3 h-full flex flex-col justify-center text-center"
           :class="{ 'text-salmon': page == 'jobs' }"
         >
-          <p class="text-xl"><i class="far fa-suitcase" /></p>
+          <p class="text-xl">
+            <i class="far fa-suitcase" />
+          </p>
           <p>Meine Jobs</p>
         </nuxt-link>
         <nuxt-link
+          v-if="user"
           to="/profile/me"
           class="w-1/3 h-full flex flex-col justify-center text-center"
           :class="{ 'text-salmon': page == 'profile' }"
         >
-          <p class="text-xl"><i class="far fa-user-circle" /></p>
+          <p class="text-xl">
+            <i class="far fa-user-circle" />
+          </p>
           <p>Profil</p>
         </nuxt-link>
       </div>
@@ -156,8 +165,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import LoginCard from '~/components/LoginCard.vue'
 import mobile from 'is-mobile'
+import LoginCard from '~/components/LoginCard.vue'
 
 export default Vue.extend({
   components: {
@@ -169,6 +178,20 @@ export default Vue.extend({
       open: false,
       openLogin: false,
     }
+  },
+
+  computed: {
+    user () {
+      return this.$accessor.user.user
+    },
+
+    page () {
+      const route = this.$route.name || ''
+      if (route.indexOf('jobs') === 0) return 'jobs'
+      if (route.indexOf('profile') === 0) return 'profile'
+
+      return 'overview'
+    },
   },
 
   created () {
@@ -183,20 +206,6 @@ export default Vue.extend({
       return this.$router.replace('/demo')
     } else {
       this.$accessor.user.enableDemoMode()
-    }
-  },
-
-  computed: {
-    user () {
-      return this.$accessor.user.user
-    },
-
-    page () {
-      const route = this.$route.name || ''
-      if (route.indexOf('jobs') === 0) return 'jobs'
-      if (route.indexOf('profile') === 0) return 'profile'
-      
-      return 'overview'
     }
   }
 })
