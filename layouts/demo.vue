@@ -24,6 +24,7 @@
           <p class="mt-3 text-lg leading-7 ">
             Das Coronavirus verändert unsere Welt und unseren Arbeitsmarkt. Wenn du also gerade deinen Job verloren hast oder nur noch eingeschränkt ausüben kannst, hast du nun die Chance in Bereichen auszuhelfen, in denen Hilfe gerade dringend benötigt wird.
           </p>
+          <a class="mt-8 block text-lg leading-7 text-salmon" href="mailto:hallo@getjay.de">hallo@getjay.de</a>
         </div>
 
         <div class="mt-10 -mx-4 relative lg:mt-0">
