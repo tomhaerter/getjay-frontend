@@ -23,7 +23,7 @@
     "is-mobile": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "nuxt": "^2.0.0",
     "nuxt-typed-vuex": "^0.1.17",
     "portal-vue": "^2.1.7",
